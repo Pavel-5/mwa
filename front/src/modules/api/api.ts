@@ -1,8 +1,14 @@
 import { apifetch } from "./axios";
 import { IReqUser } from "../../interfaces";
+import { AxiosResponse } from "axios";
 
 type CreateUserResponse = {
   access_token: string;
+};
+type RegisterUserResponse = {
+  statusCode: number;
+  message: string;
+  error?: string;
 };
 
 export const api = {
@@ -20,5 +26,22 @@ export const api = {
     };
 
     return data;
+  },
+  registerAccount: async (value: IReqUser) => {
+    const user = { username: value.username, password: value.password };
+    try {
+      const resp = await apifetch.post<RegisterUserResponse>(
+        `/api/v1/auth/register`,
+        {
+          ...user,
+        }
+      );
+
+      return resp.data;
+    } catch (error) {
+      return {
+        statusCode: 400,
+      };
+    }
   },
 };

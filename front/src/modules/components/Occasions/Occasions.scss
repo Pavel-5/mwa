@@ -1,0 +1,27 @@
+.MuiBox-root {
+    .main_cont-occasions {
+
+        .occasions-center {
+            text-align: center;
+        }
+
+        .occasions-cont {
+            display: block;
+            width: 100%;
+            margin: auto;
+
+            .occasions-cont-item {
+                display: inline-block;
+                margin: 0 15px;
+            }
+
+            .occasions-cont-item:first-child {
+                margin-left: 0;
+            }
+
+            .occasions-cont-item:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
